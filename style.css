@@ -1,0 +1,64 @@
+table {
+	border-top: 1px solid #a2a2e2;
+	border-left: 1px solid #a2a2e2;
+	
+	table-layout: fixed;
+	width: 0px;
+	
+	border-spacing: 0px;
+	padding: 0px;
+	margin: 0px;	
+	border-collapse: collapse;
+}
+
+table col {
+	width: 100px;
+}
+
+table th {
+	border-right: 1px solid #a2a2e2;
+	border-bottom: 1px solid #a2a2e2;
+	font-weight: normal;
+	text-align: left;
+	background-color: #f2f2f2
+}
+
+table td {
+	border-right: 1px solid #a2a2e2;
+	border-bottom: 1px solid #d2d2e2;
+	padding: 3px;
+	font-weight: normal;
+	text-align: left;
+	max-width: 200px;
+	overflow: hidden;
+	line-height: 18px;
+}
+
+table th>div {
+	min-width: 20px;
+	max-height: 1.1em;
+	overflow: hidden;
+	width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+	position: relative;
+}
+
+.tableResize {
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	width: 5px;
+	cursor: e-resize;
+}
+
+th>div:hover .tableResize {
+	background-color: green;
+}
+
+.textWidth {
+ 	position: absolute;
+	visibility: hidden;
+	white-space: nowrap;
+ }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Table-resize</title>
+	<link rel="stylesheet" media="all" href="style.css">
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+<h1>Table-resize demo</h1>
+
+<table id="table">
+
+	<colgroup>
+		<col>
+		<col>
+		<col>
+		<col>
+		<col>
+	</colgroup>
+	
+	<thead>
+		<tr>
+			<th>Header 1</th>
+			<th>Header 2</th>
+			<th>Header 3</th>
+			<th>Header 4</th>
+			<th>Header 5</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td>Pellentesque</td>
+			<td>habitant</td>
+			<td>morbi</td>
+			<td>tristique</td>
+			<td>senectus</td>
+		</tr>
+		<tr>
+			<td>tempor</td>
+			<td>placerat</td>
+			<td>commodo</td>
+			<td>eleifend</td>
+			<td>condimentum</td>
+		</tr>
+		<tr>
+			<td>eros</td>
+			<td>diam</td>
+			<td>fames</td>
+			<td>vitae</td>
+			<td>egestas</td>
+		</tr>
+	</tbody>
+
+</table>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="table-resize.js"></script>
+<script>
+	TableResize('table');
+</script>
+
+</body>
+</html>
