@@ -1,4 +1,4 @@
-function TableResize (id) {
+function tableResize (selector) {
 	
 	var mousedown = false;
 	var currentCol = undefined;
@@ -10,9 +10,9 @@ function TableResize (id) {
 	
 	return function () {
 		
-		var table = $('#'+id);
-		for (var seq in widths[id]) {
-			table.find('col:nth-child('+ (parseInt(seq)+1) +')').width( widths[id][seq] );
+		var table = $(selector);
+		for (var seq in widths[selector]) {
+			table.find('col:nth-child('+ (parseInt(seq)+1) +')').width( widths[selector][seq] );
 		}
 		
 		table.find('th').wrapInner('<div>').find('div').append('<div class="tableResize"></div>');
@@ -24,8 +24,8 @@ function TableResize (id) {
 			mousedown = true;
 			currentX = e.pageX;
 			currentWidth = currentCol[0].offsetWidth || parseInt( currentCol[0].style.width.substring(0, (currentCol[0].style.width.length)-2) ) || 100;	// 100 is default
-		
-			document.onmousemove = function(e) {
+			
+			var mousemoveevent = function(e) {
 				if (mousedown) {
 					var width = currentWidth + (e.pageX-currentX);
 					if (width < 20) width = 20;
@@ -33,19 +33,22 @@ function TableResize (id) {
 					currentCol.width( width );
 					var seq = currentCol.closest('colgroup').find('col').index( currentCol );
 					
-					if ( widths[id] == undefined ) widths[id] = {};
-					widths[id][seq] = width;
+					if ( widths[selector] == undefined ) widths[selector] = {};
+					widths[selector][seq] = width;
 				}
-			};
+			}
 			
-			document.onmouseup = function() {
+			var mouseupevent = function() {
 				if (mousedown) {
 					mousedown = false;
-					document.onmousemove = null;
-					document.onmouseup = null;
+					document.removeEventListener('mousemove', mousemoveevent, false);
+					document.removeEventListener('mouseup', mouseupevent, false);
 					localStorage.TableResizeWidths = JSON.stringify(widths);
 				}
 			};
+			
+			document.addEventListener('mousemove', mousemoveevent, false);
+			document.addEventListener('mouseup', mouseupevent, false);
 			
 			return false;
 		})
@@ -68,14 +71,14 @@ function TableResize (id) {
 				if ( tWidth > maxWidth ) maxWidth = tWidth;
 			}
 			
-			maxWidth += 10; // padding..
+			maxWidth += 10; // some padding..
 			if (maxWidth < 20) maxWidth = 20;
 			
 			table.find('col:nth-child('+(index+1)+')').width(maxWidth);
 			var seq = index;
 			
-			if ( widths[id] == undefined ) widths[id] = {};
-			widths[id][seq] = maxWidth;
+			if ( widths[selector] == undefined ) widths[selector] = {};
+			widths[selector][seq] = maxWidth;
 			localStorage.TableResizeWidths = JSON.stringify(widths);
 			
 			textWidth.remove();
