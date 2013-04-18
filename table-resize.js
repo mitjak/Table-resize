@@ -1,9 +1,6 @@
 function tableResize(selector) {
     'use strict';
 
-    var mousedown = false;
-    var currentCol = undefined;
-    var currentX, currentWidth;
     var widths = {};
     var table = $(selector);
 
@@ -27,6 +24,10 @@ function tableResize(selector) {
 
     function dragDropResize(e) {
 
+        var mousedown = false;
+        var currentCol = undefined;
+        var currentX, currentWidth;
+        
         currentCol = table.find('col:nth-child(' + ($(this).closest('tr').find('th').index($(this).closest('th')) + 1) + ')');
         mousedown = true;
         currentX = e.pageX;
