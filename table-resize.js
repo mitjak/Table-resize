@@ -19,11 +19,11 @@ function tableResize(selector) {
         table.find('th .tableResize').bind('mousedown', dragDropResize)
         // auto resize
         .bind('dblclick', autoResize);
-
+        
     }();
 
     function dragDropResize(e) {
-
+		
         var mousedown = false;
         var currentCol = undefined;
         var currentX, currentWidth;
