@@ -10,4 +10,4 @@ Usage
 =====
 
 Include .js and .css file.
-Call the function with table ID as a parameter: TableResize('table-id');
+Call the function with table selector as a parameter: TableResize('#table-id');
